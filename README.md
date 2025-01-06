@@ -1,3 +1,32 @@
+**Hướng dẫn này tạo node trên Docker container với quyền chi sẻ Folder giữa Ubuntu và container (Trên Jetson nano)**
+# Tạo docker container với full quyền truy cập phần cứng và share_foler
+
+Giả sử thư mục trên Ubuntu là _```/home/jetson/human_detection_yolo3tiny/tmp```_ và trên container là _```/root/shared_folder```_, khi đó lệnh tạo container:
+```
+sudo docker run -it \
+  --name ros-humble-container \
+  -v /dev:/dev \
+  --privileged \
+  --runtime nvidia \
+  --network host \
+  --gpus all \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  -v $XAUTHORITY:/root/.Xauthority \
+  -v /home/jetson/human_detection_yolo3tiny/tmp:/root/shared_folder \
+  dustynv/ros:humble-desktop-l4t-r36.4.0
+```
+...sau đó vào container và kiểm tra thư mục liên kết:
+
+```
+docker exec -it ros-humble-container /bin/bash
+cd
+ls
+cd shared_folder
+```
+lúc này file ```person_detection.json``` có tồn tại.
+
 # create-a-ROS2-node
 
 create a ROS2 node for read Json file output from **```person_detector_with_file_output.py```** and publish /cmd_vel topic to control my 2 wheels robot.
@@ -209,3 +238,4 @@ Nếu vẫn gặp lỗi sau khi source, hãy kiểm tra các vấn đề sau:
 echo $PATH
 export PATH=/opt/ros/foxy/bin:$PATH
 ```
+
