@@ -18,7 +18,7 @@ class SimpleFollowerNode(Node):
         # Parameters
         self.target_distance = 1.0  # meters
         self.max_linear_speed = 0.5  # m/s
-        self.max_angular_speed = 1.82  # rad/s
+        self.max_angular_speed = 1.0  # rad/s
         self.search_angular_speed = 1.0  # rad/s for search mode
         
         # Acceleration limits (units per second)
