@@ -21,11 +21,11 @@ class SimpleFollowerNode(Node):
         # Parameters
         self.target_distance = 1.0  # meters
         self.max_linear_speed = 0.5  # m/s
-        self.max_angular_speed = 1.82  # rad/s
+        self.max_angular_speed = 1.0  # rad/s
         self.search_angular_speed = 1.0  # rad/s for search mode
         
         # Update file path to use absolute path in Docker container
-        self.detection_file_path = Path('/root/shared_folder/tmp/person_detection.json')
+        self.detection_file_path = Path('/root/shared_folder/person_detection.json')
         
         self.get_logger().info(f'Simple follower node initialized. Watching file: {self.detection_file_path}')
         
