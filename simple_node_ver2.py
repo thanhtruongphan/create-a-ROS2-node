@@ -16,7 +16,7 @@ class SimpleFollowerNode(Node):
         self.timer = self.create_timer(0.1, self.timer_callback)  # 10Hz
         
         # Parameters
-        self.target_distance = 1.0  # meters
+        self.target_distance = 1.2  # meters
         self.max_linear_speed = 0.5  # m/s
         self.max_angular_speed = 1.0  # rad/s
         self.search_angular_speed = 1.0  # rad/s for search mode
