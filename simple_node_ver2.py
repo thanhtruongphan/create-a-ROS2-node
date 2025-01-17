@@ -34,7 +34,7 @@ class SimpleFollowerNode(Node):
         self.velocity_smoothing = 0.3  # Lower = smoother but slower response
         
         # Update file path to use absolute path in Docker container
-        self.detection_file_path = Path('/root/shared_folder/tmp/person_detection.json')
+        self.detection_file_path = Path('/root/shared_folder/person_detection.json')
         
         self.get_logger().info(f'Simple follower node initialized. Watching file: {self.detection_file_path}')
         
